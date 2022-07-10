@@ -20,7 +20,7 @@ export function Post({ author, content, publishedAt }) {
                         <span>{ author.role }</span>
                     </div>
                 </div>
-                <time title={publishedAtFormatted} dateTime={publishedAt.toISOString()}>{ publishedAtFormatted }</time>
+                <time title={publishedAtFormatted} dateTime={publishedAt.toISOString()}>{ publishedAtRelativeToNow }</time>
             </header>
             <div className={styles.content}>
                 {
