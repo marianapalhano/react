@@ -3,7 +3,12 @@ import { useState } from 'react';
 import { Avatar } from './Avatar';
 import styles from './Comment.module.css';
 
-export function Comment({ content, onDeleteComment }) {
+interface CommentProps {
+    content: string;
+    onDeleteComment: (comment: string) => void;
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
     const [likeCount, setLikeCount] = useState(0);
 
     function deleteComment() {
@@ -11,12 +16,14 @@ export function Comment({ content, onDeleteComment }) {
     };
 
     function likeComment() {
-        setLikeCount(likeCount + 1);
+        setLikeCount(state => {
+            return state + 1
+        });
     }
 
     return (
         <div className={styles.comment}>
-            <Avatar hasBorder={false} src="https://github.com/marianapalhano.png" />
+            <Avatar hasBorder={false} src="https://github.com/marianapalhano.png" alt="" />
             
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>

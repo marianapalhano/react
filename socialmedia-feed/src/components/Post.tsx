@@ -1,34 +1,51 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
 import styles from './Post.module.css';
 
-export function Post({ author, content, publishedAt }) {
+interface Author {
+    name: string;
+    role: string;
+    avatarUrl: string;
+}
+
+interface PostProps {
+    author: Author;
+    publishedAt: Date;
+    content: Content[];
+}
+
+interface Content {
+    type: 'paragraph' | 'link';
+    content: string;
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
     const publishedAtFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", { locale: ptBR })
     const publishedAtRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true })
     const [comments, setComments] = useState(['Post muito bacana, hein?'])
     const [newComment, setNewComment] = useState('')
 
-    function newCommentChange(evt) {
-        evt.target.setCustomValidity('');
-        setNewComment(evt.target.value)
+    function newCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
+        event.target.setCustomValidity('');
+        setNewComment(event.target.value)
     }
 
-    function newCommentIsInvalid(evt) {
-        evt.target.setCustomValidity('Esse campo é obrigatório');
+    function newCommentIsInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
+        event.target.setCustomValidity('Esse campo é obrigatório');
     }
 
-    function createComment(evt) {
-        evt.preventDefault()
+    function createComment(event: FormEvent) {
+        event.preventDefault()
         setComments([...comments, newComment])
         setNewComment('')
     }
 
-    function deleteComment(commentToDelete) {
+    function deleteComment(commentToDelete: string) {
         const commentsWithoutDeletedOne = comments.filter(comment => {
             return comment != commentToDelete;
         })
