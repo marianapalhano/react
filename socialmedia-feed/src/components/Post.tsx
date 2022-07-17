@@ -27,7 +27,7 @@ interface Content {
 export function Post({ author, content, publishedAt }: PostProps) {
     const publishedAtFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", { locale: ptBR })
     const publishedAtRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true })
-    const [comments, setComments] = useState(['Post muito bacana, hein?'])
+    const [comments, setComments] = useState([] as string[])
     const [newComment, setNewComment] = useState('')
 
     function newCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
