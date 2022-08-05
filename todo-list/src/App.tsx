@@ -1,6 +1,8 @@
 import { Header } from "./components/Header"
 import { List } from "./components/List"
 
+import './global.css'
+
 function App() {
 
   return (
