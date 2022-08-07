@@ -1,9 +1,10 @@
 import styles from './Header.module.css';
+import todoLogo from '../assets/todo-logo.svg';
 
 export function Header() {
     return (
-        <header>
-            <h1 className={styles.header}>ToDo</h1>
+        <header className={styles.header}>
+            <img src={todoLogo} />
         </header>
     )
 }
