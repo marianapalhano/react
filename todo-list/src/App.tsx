@@ -1,5 +1,5 @@
 import { Header } from "./components/Header"
-import { List } from "./components/List"
+import { TaskList } from "./components/TaskList"
 
 import './global.css'
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Header />
-      <List />
+      <TaskList />
     </div>
   )
 }
