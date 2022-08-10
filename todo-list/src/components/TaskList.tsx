@@ -1,5 +1,5 @@
 import styles from './TaskList.module.css';
-import { Circle, PlusCircle, Trash, CheckCircle } from 'phosphor-react';
+import { Circle, PlusCircle, Trash, CheckCircle, ClipboardText } from 'phosphor-react';
 
 export function TaskList() {
     return (
@@ -10,12 +10,24 @@ export function TaskList() {
             </form>
             <main>
                 <header>
-                    <strong>Tarefas Criadas</strong>
-                    <strong>Concluídas</strong>
+                    <div>
+                        <strong>Tarefas Criadas</strong><span>5</span>
+                    </div>
+                    <div>
+                        <strong className={styles.completedCounter}>Concluídas</strong><span>2 de 5</span>
+                    </div>
                 </header>
                 <ul>
-                    <li><Circle size={18} />Preparar apresentacao<Trash size={18} /></li>
-                    <li><Circle size={18} />Estudar ReactJS pela Rocketseat<Trash size={18} /></li>
+                    <li>
+                        <a><Circle size={18} /></a>
+                        <span>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</span>
+                        <a><Trash size={18} /></a>
+                    </li>
+                    <li>
+                        <a><Circle size={18} /></a>
+                        <span>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</span>
+                        <a><Trash size={18} /></a>
+                    </li>
                 </ul>
             </main>
         </>
