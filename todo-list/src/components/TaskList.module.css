@@ -41,6 +41,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--gray-100);
 }
 
 main header {
@@ -90,4 +91,53 @@ main ul li {
 main ul li span {
     width: 39.5rem;
     line-height: 140%;
+}
+
+.emptyList {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 140%;
+    color: var(--gray-300);
+}
+
+.emptyList strong {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .wrapper {
+        margin: 0 auto;
+    }
+
+    .newTaskForm button {
+        width: 90%;
+    }
+
+    form {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    main header {
+        width: 90%;
+    }
+
+    main ul {
+        width: 90%;
+    }
+
+    main ul li span {
+        width: 90%;
+    }
+
+    main ul li {
+        gap: 0.5rem;
+    }
 }

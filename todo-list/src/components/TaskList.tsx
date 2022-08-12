@@ -3,7 +3,7 @@ import { Circle, PlusCircle, Trash, CheckCircle, ClipboardText } from 'phosphor-
 
 export function TaskList() {
     return (
-        <>
+        <div className={styles.wrapper}>
             <form className={styles.newTaskForm}>
                 <input type="text" placeholder='Adicione uma nova tarefa' />
                 <button>Criar<PlusCircle size={18} /></button>
@@ -29,7 +29,13 @@ export function TaskList() {
                         <a><Trash size={18} /></a>
                     </li>
                 </ul>
+
+                <div className={styles.emptyList}>
+                    <ClipboardText size={56} />
+                    <strong>Você ainda não tem tarefas cadastradas</strong>
+                    Crie tarefas e organize seus itens a fazer
+                </div>
             </main>
-        </>
+        </div>
     )
 }
