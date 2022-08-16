@@ -1,5 +1,5 @@
-import './Task.module.css';
-import { Circle, PlusCircle, Trash, CheckCircle } from 'phosphor-react';
+import styles from './Task.module.css';
+import { Circle, Trash, CheckCircle } from 'phosphor-react';
 
 interface TaskProps {
     id: number,
@@ -9,10 +9,13 @@ interface TaskProps {
 
 export function Task({ id, description, completed }: TaskProps) {
     return (
-        <li>
-            <a><Circle size={18} /></a>
+        <li className={styles.task}>
+            <a>
+                <Circle size={22} className={completed ? styles.hidden : styles.notChecked} />
+                <CheckCircle size={22} className={completed ? styles.checked : styles.hidden} weight="fill" />
+            </a>
             <span>{description}</span>
-            <a><Trash size={18} /></a>
+            <a><Trash size={20} /></a>
         </li>
     )
 }

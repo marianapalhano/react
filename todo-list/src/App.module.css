@@ -90,6 +90,10 @@ main ul {
     margin-top: 1rem;
 }
 
+.notEmptyList {
+    display: none;
+}
+
 @media (max-width: 768px) {
     html {
         font-size: 14px;

@@ -27,11 +27,12 @@ tasks = [
   {
     id: 3,
     description: 'Qwert urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
+    completed: true
   }
 ]
 
 function App() {
+  const isTaskListEmpty = tasks.length == 0;
 
   return (
     <div>
@@ -51,26 +52,23 @@ function App() {
                     </div>
                 </header>
                 <ul>
-                {tasks.map(task => {
-                  if (tasks.length == 0) {
-                    return (
-                      <div className={styles.emptyList}>
-                        <ClipboardText size={56} />
-                        <strong>Você ainda não tem tarefas cadastradas</strong>
-                        Crie tarefas e organize seus itens a fazer
-                      </div>
+                {
+                  tasks.map(task => {
+                    return(
+                      <Task
+                        id={task.id}
+                        description={task.description}
+                        completed={task.completed}
+                      />
                     )
-                  } else {
-                      return(
-                        <Task
-                          id={task.id}
-                          description={task.description}
-                          completed={task.completed}
-                        />
-                      )
-                  }
-                })}
+                  })
+                }
                 </ul>
+                <div className={isTaskListEmpty ? styles.emptyList : styles.notEmptyList}>
+                  <ClipboardText size={56} />
+                  <strong>Você ainda não tem tarefas cadastradas</strong>
+                  Crie tarefas e organize seus itens a fazer
+                </div>
             </main>
       </div>
       
