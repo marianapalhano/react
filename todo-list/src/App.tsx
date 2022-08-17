@@ -3,7 +3,8 @@ import { Task } from "./components/Task"
 
 import './global.css';
 import styles from './App.module.css';
-import { Circle, PlusCircle, Trash, CheckCircle, ClipboardText } from 'phosphor-react';
+import { PlusCircle, ClipboardText } from 'phosphor-react';
+import { FormEvent, useState } from "react";
 
 interface TaskProps {
   id: number,
@@ -11,35 +12,41 @@ interface TaskProps {
   completed: boolean
 }
 
-let tasks: TaskProps[] = [];
+// let tasks: TaskProps[] = [];
 
-tasks = [
-  {
-    id: 1,
-    description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
-  },
-  {
-    id: 2,
-    description: 'Asdfasd urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
-  },
-  {
-    id: 3,
-    description: 'Qwert urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: true
-  }
-]
+// tasks = [
+//   {
+//     id: 1,
+//     description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//     completed: false
+//   },
+//   {
+//     id: 2,
+//     description: 'Asdfasd urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//     completed: false
+//   },
+//   {
+//     id: 3,
+//     description: 'Qwert urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//     completed: true
+//   }
+// ]
 
 function App() {
+  const [tasks, setTasks] = useState([] as TaskProps[]);
   const isTaskListEmpty = tasks.length == 0;
+
+  function handleNewTask(event: FormEvent) {
+    event.preventDefault();
+    setTasks([...tasks, {id: 4, description: 'asdf', completed: false}]);
+  }
 
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
-            <form className={styles.newTaskForm}>
-                <input type="text" placeholder='Adicione uma nova tarefa' />
+            <form onSubmit={handleNewTask} className={styles.newTaskForm}>
+                <input type="text" placeholder='Adicione uma nova tarefa' name="task" />
                 <button>Criar<PlusCircle size={18} /></button>
             </form>
             <main>
